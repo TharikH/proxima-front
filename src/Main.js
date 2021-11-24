@@ -30,11 +30,7 @@ class Main extends React.Component{
                 </Container>
                     </div>
                     </Route>
-
-
-
                 </Switch>
-               
             </Router>   
             </div>
         );
