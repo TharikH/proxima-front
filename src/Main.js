@@ -20,7 +20,7 @@ class Main extends React.Component{
                     <Route path="/Signup">
                         <Signup />
                     </Route>
-                    <Route>
+                    <Route path="/home">
                     <div>
                     <Navs />
                 <Container className="mt-4">

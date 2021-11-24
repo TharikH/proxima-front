@@ -2,7 +2,8 @@ import React from "react";
 import {Table,Button, Row, Col} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit,faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-
+import { Image } from "react-bootstrap";
+import './App.css';
 class Tables extends React.Component{
   render(){
     return(
@@ -26,8 +27,8 @@ class Tables extends React.Component{
   </thead>
   <tbody>
     <tr>
-      <th scope="row">
-        1
+      <th scope="row" className="wrapper-image">
+        <Image src="https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=50" rounded />
       </th>
       <td>
         Mark
@@ -40,10 +41,10 @@ class Tables extends React.Component{
       </td>
       <td>
         <Row className="tableicon">
-          <Col className="col-1">
+          <Col className="col-1 editbut">
           <FontAwesomeIcon icon={faEdit} />
           </Col>
-          <Col className="col-1">
+          <Col className="col-1 deletebut">
           <FontAwesomeIcon icon={faTrashAlt}/>
           </Col>
         </Row>
