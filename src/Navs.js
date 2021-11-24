@@ -11,7 +11,7 @@ class Navs extends React.Component{
     light
   >
     <NavbarBrand href="/">
-      reactstrap
+      Proxima
     </NavbarBrand>
     <NavbarToggler onClick={function noRefCheck(){}} />
     <Collapse navbar>
