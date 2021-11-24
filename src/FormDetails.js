@@ -2,6 +2,12 @@ import React from 'react';
 import { Button, Form, FormGroup, FormText, Input, Label } from 'reactstrap';
 
 class FormDetails extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            data:props.data
+        }
+    }
     render() {
         return (
             <Form inline>
@@ -17,6 +23,7 @@ class FormDetails extends React.Component {
                         name="name"
                         placeholder="Name"
                         type="text"
+                        value={this.state.data?this.state.data.name:''}
                     />
                 </FormGroup>
                 {' '}
@@ -32,6 +39,7 @@ class FormDetails extends React.Component {
                         name="price"
                         placeholder="Price"
                         type="Number"
+                        value={this.state.data?this.state.data.price:''}
                     />
                 </FormGroup>
                 {' '}
@@ -39,6 +47,8 @@ class FormDetails extends React.Component {
                     <Input
                         name="radio1"
                         type="radio"
+                        // {this.state.data?this.state.data.Name:''}
+                        // {}
                     />
                     {' '}
                     <Label check>

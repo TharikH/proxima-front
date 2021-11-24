@@ -4,35 +4,54 @@ import {
     ModalHeader, ModalBody
 } from "reactstrap";
 import FormDetails from './FormDetails';
-class ModalPage extends React.Component {
+import ProfileModal from './ProfileModal';
+class ModalPage2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            modal: false,
+            modal: props.boolval,
 
         }
     }
+    componentDidMount(props){
+
+    }
+    // static getDerivedStateFromProps(props, state) {
+    //     if(props.boolval !== state.modal){
+    //         console.log(props.boolval)
+    //     return {modal: props.boolval };
+    //     }
+    //     return null
+    // }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.boolval !== this.props.boolval) {
+          this.setState({ modal: nextProps.boolval });
+          console.log(nextProps);
+        //   this.selectNew();
+        }
+      }
     toggle = () => {
         this.setState((prevState) => {
             return { modal: !prevState.modal }
         });
-    }
+    
+}
     render() {
         return (
             <div style={{
                 display: 'block'
             }}>
-                <Button color="primary"
-                    onClick={this.toggle}>Add New Product</Button>
+                {/* <Button color="primary"
+                    onClick={this.toggle}>Open Modal</Button> */}
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
                     centered
                     >
                         <ModalHeader toggle={this.toggle}>
-                        Add new Product
+                        Edit your Profile
                         </ModalHeader>
                     <ModalBody>
-                        <FormDetails />
+                        <ProfileModal />
                     </ModalBody>
                     <ModalFooter>
                         <Button
@@ -52,4 +71,4 @@ class ModalPage extends React.Component {
     }
 }
 
-export default ModalPage;
+export default ModalPage2;

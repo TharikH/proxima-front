@@ -4,14 +4,23 @@ import {
     ModalHeader, ModalBody
 } from "reactstrap";
 import FormDetails from './FormDetails';
-class ModalPage extends React.Component {
+class ModalPage3 extends React.Component {
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
             modal: false,
-
+            id:props.id,
+            data:props.data
         }
     }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.boolval !== this.props.boolval) {
+          this.setState({ modal: nextProps.boolval });
+          console.log(nextProps);
+        //   this.selectNew();
+        }
+      }
     toggle = () => {
         this.setState((prevState) => {
             return { modal: !prevState.modal }
@@ -22,8 +31,8 @@ class ModalPage extends React.Component {
             <div style={{
                 display: 'block'
             }}>
-                <Button color="primary"
-                    onClick={this.toggle}>Add New Product</Button>
+                {/* <Button color="primary"
+                    onClick={this.toggle}>Open Modal</Button> */}
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
                     centered
@@ -32,7 +41,7 @@ class ModalPage extends React.Component {
                         Add new Product
                         </ModalHeader>
                     <ModalBody>
-                        <FormDetails />
+                        <FormDetails data={this.state.data}/>
                     </ModalBody>
                     <ModalFooter>
                         <Button
@@ -52,4 +61,4 @@ class ModalPage extends React.Component {
     }
 }
 
-export default ModalPage;
+export default ModalPage3;

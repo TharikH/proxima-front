@@ -6,8 +6,11 @@ import {Container,Button,Row} from 'reactstrap';
 import CardDetail from './CardDetail';
 import ModalPage from './ModalPage';
 import Login from './Login';
-import Signup from './Signup'
+import Signup from './Signup';
+import ProfileModal from './ProfileModal';
 import {BrowserRouter as Router,Switch, Route} from 'react-router-dom';
+import ModalPage2 from './ModalPage2';
+import ModalPage3 from './ModalPage3';
 class Main extends React.Component{
     render(){
         return(
@@ -25,7 +28,8 @@ class Main extends React.Component{
                     <Navs />
                 <Container className="mt-4">
                     <CardDetail/>
-                    <Row className="pt-4 addbutton"><ModalPage /></Row>
+                    <Row className="pt-4 addbutton w-25">
+                        <ModalPage /></Row>
                 <Tables />
                 </Container>
                     </div>
