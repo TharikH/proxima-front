@@ -68,7 +68,7 @@ class CardDetail extends React.Component {
                 >
                     <CardBody>
                         <CardTitle tag="h5">
-                            {this.state.name ? 'Welcome' +this.state.name: 'Please edit your profile :)'}
+                            {this.state.name ? 'Welcome User': 'Please edit your profile :)'}
                         </CardTitle>
                         <CardSubtitle
                             className="mb-2 text-muted"
