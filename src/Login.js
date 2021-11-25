@@ -12,7 +12,7 @@ const Login=()=>{
     const linkstyle={
         color:'white'
     
-    }
+    }   
     return(
         <Grid>
             <Paper elevation={10} style={paperStyle}>
@@ -20,7 +20,7 @@ const Login=()=>{
                      <Avatar style={avatarStyle}><LockOutlinedIcon/></Avatar>
                     <h2>Sign In</h2>
                 </Grid>
-                <TextField label='Username' placeholder='Enter username' fullWidth required/>
+                <TextField label='email' placeholder='Enter Email' fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
                 <FormControlLabel
                     control={

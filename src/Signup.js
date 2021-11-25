@@ -22,7 +22,7 @@ const Signup=()=>{
                 <TextField label='Email' placeholder='Enter Email'  fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
                
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign up</Button>
                 
                 <Typography > Do you have an account ? 
                      <Link to={'/'}>
