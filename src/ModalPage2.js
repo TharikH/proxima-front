@@ -10,6 +10,7 @@ class ModalPage2 extends React.Component {
         super(props);
         this.state = {
             modal: props.boolval,
+            id:props.id
 
         }
     }
@@ -51,15 +52,9 @@ class ModalPage2 extends React.Component {
                         Edit your Profile
                         </ModalHeader>
                     <ModalBody>
-                        <ProfileModal />
+                        <ProfileModal id={this.state.id} />
                     </ModalBody>
                     <ModalFooter>
-                        <Button
-                            color="primary"
-                            onClick={this.toggle}
-                        >
-                            Submit
-      </Button>
                         {' '}
                         <Button onClick={this.toggle}>
                             Cancel

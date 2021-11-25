@@ -9,6 +9,7 @@ class ModalPage extends React.Component {
         super(props);
         this.state = {
             modal: false,
+            shopid:'fudW345dIWWYj9YUKRgR'
 
         }
     }
@@ -32,15 +33,9 @@ class ModalPage extends React.Component {
                         Add new Product
                         </ModalHeader>
                     <ModalBody>
-                        <FormDetails />
+                        <FormDetails closeModal={this.toggle} shopid={this.state.shopid}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button
-                            color="primary"
-                            onClick={this.toggle}
-                        >
-                            Submit
-      </Button>
                         {' '}
                         <Button onClick={this.toggle}>
                             Cancel

@@ -1,20 +1,41 @@
 import React from 'react';
 import { Badge, Button, Form, FormGroup, FormText, Input, Label } from 'reactstrap';
 import { geolocated } from "react-geolocated";
-
+import { Textarea } from '@geist-ui/react';
+import { collection, getDocs, query, where, deleteDoc, doc } from 'firebase/firestore'
+import {db} from './Firebase-config';
 class FormDetails extends React.Component {
     constructor(props){
         super(props);
         this.state ={
-            lattiude:null,
+            latitude:null,
             longitude:null,
-            useraddress:null
+            useraddress:null,
+            name:''
         }
     }
     componentDidMount() {
-    
+    this.fetchMessages();
       }
-    
+      fetchMessages = async () => {
+        async function getCities(db) {
+            const prod = collection(db, 'shops');
+            const q = query(prod, where("id", "==", "fudW345dIWWYj9YUKRgR"));
+            const citySnapshot = await getDocs(q);
+            const cityList = citySnapshot.docs.map(doc => doc.data());
+            console.log("hello kutta")
+            console.log(cityList);
+            return cityList;
+          }
+        var hello = await getCities(db);
+        console.log(hello);
+        this.setState({
+          useraddress:hello[0].address,
+          name:hello[0].name,
+          latitude:hello[0].location._lat,
+          longitude:hello[0].location._long
+        })
+      }
 
     getLocation=()=>{
         navigator.geolocation.getCurrentPosition((position) =>{
@@ -31,21 +52,6 @@ class FormDetails extends React.Component {
                         for="exampleEmail"
                         hidden
                     >
-                        Name
-                </Label>
-                    <Input
-                        id="productname"
-                        name="name"
-                        placeholder="Name"
-                        type="text"
-                    />
-                </FormGroup>
-                {' '}
-                <FormGroup>
-                    <Label
-                        for="exampleEmail"
-                        hidden
-                    >
                         Shop Name
                 </Label>
                     <Input
@@ -53,22 +59,24 @@ class FormDetails extends React.Component {
                         name="name"
                         placeholder="ShopName"
                         type="text"
+                        value={this.state.name}
                     />
                 </FormGroup>
                 {' '}
                 <FormGroup>
-                    <Label
+                <Label
                         for="examplePassword"
                         hidden
                     >
-                        Email
+                        text area
                     </Label>
                     <Input
-                        id="productprice"
-                        name="price"
-                        placeholder="Email"
-                        type="email"
-                    />
+      id="exampleText"
+      name="text"
+      type="textarea"
+      placeholder="Address"
+      value={this.state.useraddress}
+    />
                 </FormGroup>
                 {' '}
                 <FormGroup>
@@ -78,12 +86,13 @@ class FormDetails extends React.Component {
                     <br />
                     <Button outline color="primary" onClick={this.getLocation}>Get Location</Button>
                 </FormGroup>
+
                 <FormGroup>
-                    {this.state.lattiude?<Label >
+                    {this.state.latitude?<Label >
                         <Badge
                         color="primary"
                         pill
-                        > lattitude: {this.state.lattiude}</Badge>
+                        > lattitude: {this.state.latitude}</Badge>
                         
                         <Badge
                         color="primary"

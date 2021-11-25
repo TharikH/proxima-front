@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavbarBrand,Navbar,NavbarToggler,Collapse,Nav,NavItem,NavLink,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,NavbarText} from 'reactstrap';
+import {NavbarBrand,Navbar,NavbarToggler,Collapse,Nav,NavItem,NavLink,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,NavbarText, Button} from 'reactstrap';
 
 class Navs extends React.Component{
     render(){
@@ -24,11 +24,11 @@ class Navs extends React.Component{
             Components
           </NavLink>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <NavLink href="https://github.com/reactstrap/reactstrap">
             GitHub
           </NavLink>
-        </NavItem>
+        </NavItem> */}
         <UncontrolledDropdown
           inNavbar
           nav
@@ -54,7 +54,7 @@ class Navs extends React.Component{
         </UncontrolledDropdown>
       </Nav>
       <NavbarText>
-        Simple Text
+        <Button color="primary" outline >Logout</Button>
       </NavbarText>
     </Collapse>
   </Navbar>

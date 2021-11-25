@@ -8,15 +8,17 @@ class ModalPage3 extends React.Component {
     constructor(props) {
         super(props);
         console.log(props)
+        console.log('hello');
         this.state = {
             modal: false,
             id:props.id,
-            data:props.data
+            data:props.data,
+            shopid:props.shopid
         }
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.boolval !== this.props.boolval) {
-          this.setState({ modal: nextProps.boolval });
+        if (nextProps !== this.props) {
+          this.setState({ modal: nextProps.boolval,id:nextProps.id ,shopid:nextProps.shopid});
           console.log(nextProps);
         //   this.selectNew();
         }
@@ -38,18 +40,12 @@ class ModalPage3 extends React.Component {
                     centered
                     >
                         <ModalHeader toggle={this.toggle}>
-                        Add new Product
+                        Edit products
                         </ModalHeader>
                     <ModalBody>
-                        <FormDetails data={this.state.data}/>
+                        <FormDetails id={this.state.id} closeModal={this.toggle} shopid={this.state.shopid}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button
-                            color="primary"
-                            onClick={this.toggle}
-                        >
-                            Submit
-      </Button>
                         {' '}
                         <Button onClick={this.toggle}>
                             Cancel
