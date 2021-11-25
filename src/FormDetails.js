@@ -6,6 +6,7 @@ import { collection,setDoc, getDocs, query, where, deleteDoc, doc } from 'fireba
 class FormDetails extends React.Component {
     constructor(props){
         super(props)
+        // console.log(props);
         this.state={
             data:props.data,
             nametext:"",
@@ -24,7 +25,7 @@ class FormDetails extends React.Component {
             const q = query(prod, where("p_id", "==", this.props.id));
             const citySnapshot = await getDocs(q);
             const cityList = citySnapshot.docs.map(doc => doc.data());
-            console.log(cityList);
+            // console.log(cityList);
             this.setState({
                 nametext:cityList[0].p_name,
                 select1:cityList[0].availability,
@@ -37,15 +38,15 @@ class FormDetails extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.id !== this.props.id) {
-        //   console.log(nextProps);
+          console.log(nextProps);
         console.log('test')
           if(nextProps.id){
                     const fetch=async()=>{
                     const prod = collection(db, 'products');
-                    const q = query(prod, where("p_id", "==", this.props.id));
+                    const q = query(prod, where("p_id", "==", nextProps.id));
                     const citySnapshot = await getDocs(q);
                     const cityList = citySnapshot.docs.map(doc => doc.data());
-                    console.log(cityList);
+                    // console.log(cityList);
                     
                     this.setState({
                         nametext:cityList[0].p_name,
@@ -76,12 +77,12 @@ class FormDetails extends React.Component {
         this.setState((prevState) => {
             return { select1: !prevState.select1,select2:!prevState.select2 }
         },()=>{
-            console.log(this.state.select1);
+            // console.log(this.state.select1);
         });
     }
     onFileChange = event => {
     
-        console.log(event.target.files);
+        // console.log(event.target.files);
         this.setState({ selectedFile: event.target.files[0] });
       
       };
@@ -98,17 +99,19 @@ class FormDetails extends React.Component {
             p_image:'https://dummyimage.com/250/ffffff/000000',
             shop_id:this.props.shopid
         }
-        // console.log(data);
+        // console.log(this.props.id);
         if(!this.props.id){
         const newCityRef = doc(collection(db, "products"));
-        console.log(newCityRef._key.path.segments[1]);
+        // console.log(newCityRef._key.path.segments[1]);
         data['p_id']=newCityRef._key.path.segments[1];
         var val=await setDoc(newCityRef, data);
         this.props.closeModal();
         }else{
-            console.log(data);
-        //     const newCityRef = doc(db, "products",this.props.id);
-        // var val=await setDoc(newCityRef, data);
+            // console.log(data);
+            data['p_id']=this.props.id;
+            const newCityRef = doc(db, "products",this.props.id);
+            var val=await setDoc(newCityRef, data);
+        // update(ref(db), updates);
         this.props.closeModal();
         }
     }

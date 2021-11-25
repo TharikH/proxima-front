@@ -45,14 +45,14 @@ class CardDetail extends React.Component {
                 const q = query(prod, where("id", "==", "fudW345dIWWYj9YUKRgR"));
                 const citySnapshot = await getDocs(q);
                 const cityList = citySnapshot.docs.map(doc => doc.data());
-                console.log("hello kutta")
-                console.log(cityList);
+                // console.log("hello kutta")
+                // console.log(cityList);
                 return cityList;
               }
             //   var hello = await getCities(db);
             //   console.log(hello);
         var hello = await getCities(db);
-        console.log(hello[0].location);
+        // console.log(hello[0]?.location);
         this.setState({
             shopname:hello[0].name,
             shopaddress:hello[0].address,

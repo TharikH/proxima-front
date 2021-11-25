@@ -4,7 +4,7 @@ import { geolocated } from "react-geolocated";
 import { Textarea } from '@geist-ui/react';
 import { collection, getDocs, query, where, deleteDoc, doc } from 'firebase/firestore'
 import {db} from './Firebase-config';
-class FormDetails extends React.Component {
+class ProfileModal extends React.Component {
     constructor(props){
         super(props);
         this.state ={
@@ -23,12 +23,12 @@ class FormDetails extends React.Component {
             const q = query(prod, where("id", "==", "fudW345dIWWYj9YUKRgR"));
             const citySnapshot = await getDocs(q);
             const cityList = citySnapshot.docs.map(doc => doc.data());
-            console.log("hello kutta")
-            console.log(cityList);
+            // console.log("hello kutta")
+            // console.log(cityList);
             return cityList;
           }
         var hello = await getCities(db);
-        console.log(hello);
+        // console.log(hello);
         this.setState({
           useraddress:hello[0].address,
           name:hello[0].name,
@@ -108,4 +108,4 @@ class FormDetails extends React.Component {
         );
     }
 }
-export default FormDetails;
+export default ProfileModal;

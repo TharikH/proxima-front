@@ -3,11 +3,11 @@ import {
     Button, Modal, ModalFooter,
     ModalHeader, ModalBody
 } from "reactstrap";
-import FormDetails from './FormDetails';
 import ProfileModal from './ProfileModal';
 class ModalPage2 extends React.Component {
     constructor(props) {
         super(props);
+        // console.log(props)
         this.state = {
             modal: props.boolval,
             id:props.id
@@ -27,7 +27,7 @@ class ModalPage2 extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.boolval !== this.props.boolval) {
           this.setState({ modal: nextProps.boolval });
-          console.log(nextProps);
+        //   console.log(nextProps);
         //   this.selectNew();
         }
       }
@@ -52,7 +52,7 @@ class ModalPage2 extends React.Component {
                         Edit your Profile
                         </ModalHeader>
                     <ModalBody>
-                        <ProfileModal id={this.state.id} />
+                        <ProfileModal id={this.props.id} />
                     </ModalBody>
                     <ModalFooter>
                         {' '}

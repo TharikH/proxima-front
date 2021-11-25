@@ -19,7 +19,7 @@ class ModalPage3 extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps !== this.props) {
           this.setState({ modal: nextProps.boolval,id:nextProps.id ,shopid:nextProps.shopid});
-          console.log(nextProps);
+        //   console.log(nextProps);
         //   this.selectNew();
         }
       }

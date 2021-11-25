@@ -20,8 +20,6 @@ const Signup=()=>{
                 </Grid>
                 <TextField label='Full Name' placeholder='Enter Fullname' fullWidth required/>
                 <TextField label='Email' placeholder='Enter Email'  fullWidth required/>
-                <TextField label='Shop Name' placeholder='Enter Shop Name'  fullWidth required/>
-                <TextField label='Phone Number' placeholder='Enter Phone Number'  fullWidth required/>
                 <TextField label='Password' placeholder='Enter password' type='password' fullWidth required/>
                
                 <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>

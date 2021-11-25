@@ -9,6 +9,10 @@ const Login=()=>{
     const paperStyle={padding :20,height:'70vh',width:400, margin:"20px auto"}
     const avatarStyle={backgroundColor:'#1bbd7e'}
     const btnstyle={margin:'8px 0'}
+    const linkstyle={
+        color:'white'
+    
+    }
     return(
         <Grid>
             <Paper elevation={10} style={paperStyle}>
@@ -27,7 +31,7 @@ const Login=()=>{
                     }
                     label="Remember me"
                  />
-                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth>Sign in</Button>
+                <Button type='submit' color='primary' variant="contained" style={btnstyle} fullWidth ><Link to="/home" style={linkstyle}>Sign in</Link></Button>
                 <Typography >
                 <Link to={'/'}>
                         Forgot password ?

@@ -13,7 +13,8 @@ class Tables extends React.Component {
     this.state = {
       data: [],
       modal1: false,
-      shopid:'fudW345dIWWYj9YUKRgR'
+      shopid:'fudW345dIWWYj9YUKRgR',
+      id:''
     }
   }
   componentDidMount() {
@@ -30,13 +31,14 @@ class Tables extends React.Component {
       const q = query(prod, where("shop_id", "==", "fudW345dIWWYj9YUKRgR"));
       const citySnapshot = await getDocs(q);
       const cityList = citySnapshot.docs.map(doc => doc.data());
-      console.log(cityList);
+      // console.log(cityList);
       return cityList;
     }
     var hello = await getCities(db);
     // console.log(hello);
     this.setState({
-      data: hello
+      data: hello,
+      id:''
     })
   }
   openModal = (e, pid) => {
@@ -61,7 +63,7 @@ class Tables extends React.Component {
       var query1 = query(wishlist, where("item_id", "==", pid));
       const snaps=await getDocs(query1);
       snaps.docs.map((docsval) => {
-        console.log(docsval.data().key);
+        // console.log(docsval.data().key);
         var docval=doc(db,'wishlist',docsval.data().key);
          var temp2=deleteDoc(docval);
         // console.log(doc.data());
@@ -75,7 +77,7 @@ class Tables extends React.Component {
       return 1  ;
     }
     var val = await deleteval(db, pid);
-    console.log(val);
+    // console.log(val);
     this.fetchMessages();
   }
   render() {
@@ -118,7 +120,7 @@ class Tables extends React.Component {
                     </td>
                     <td>
                       <Row className="tableicon">
-                        {console.log(value.p_id)}
+                        {/* {console.log(value.p_id)} */}
                         <Col className="col-1 editbut" id={value.p_id} onClick={e => {
                           this.openModal(e, value.p_id)
                         }}>
